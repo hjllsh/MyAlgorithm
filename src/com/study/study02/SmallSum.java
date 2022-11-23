@@ -2,25 +2,26 @@ package com.study.study02;
 
 public class SmallSum {
 
-    public void smallSum(int[] arr) {
+    public static int smallSum(int[] arr) {
         if (arr == null || arr.length < 2) {
-            return;
+            return 0;
         }
-        mergeWay(arr , 0, arr.length - 1);
+        return mergeWay(arr, 0, arr.length - 1);
 
     }
 
-    private void mergeWay(int[] arr, int l, int r) {
+    private static int mergeWay(int[] arr, int l, int r) {
         if (l == r){
-            return;
+            return 0;
         }
         int mid = r + ((l-r) >> 1);
-        mergeWay(arr, l, mid);
-        mergeWay(arr, mid + 1, r);
+        return mergeWay(arr, l, mid) +//逐层返回，向上地递归
+        mergeWay(arr, mid + 1, r) +
         merge(arr, l, mid, r);
+
     }
 
-    private int merge(int[] arr, int l, int mid, int r) {
+    private static int merge(int[] arr, int l, int mid, int r) {
         int[] help = new int[r - l + 1];
         int i = 0;
         int p1 = l;
@@ -34,5 +35,19 @@ public class SmallSum {
             arr[l + i] = help[i];
         }
         return res;
+    }
+    public static void main(String[] args) {
+        int[] arr = new int[10];
+        arr[0] = 1;
+        arr[1] = 7;
+        arr[2] = 5;
+        arr[3] = 2;
+        arr[4] = 6;
+        arr[5] = 3;
+        arr[6] = 3;
+        arr[7] = 9;
+        arr[8] = 5;
+        arr[9] = 8;
+        System.out.println(smallSum(arr));
     }
 }
