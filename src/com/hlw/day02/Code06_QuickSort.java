@@ -15,25 +15,25 @@ public class Code06_QuickSort {
 		if (l < r) {
 			swap(arr, l + (int) (Math.random() * (r - l + 1)), r);
 			int[] p = partition(arr, l, r);
-			quickSort(arr, l, p[0] - 1);
-			quickSort(arr, p[1] + 1, r);
+			quickSort(arr, l, p[0] - 1);//小于区
+			quickSort(arr, p[1] + 1, r);//大于区
 		}
 	}
 
 	public static int[] partition(int[] arr, int l, int r) {
-		int less = l - 1;
-		int more = r;
+		int less = l - 1;//小于区的右边界
+		int more = r;//大于区的左边界
 		while (l < more) {
 			if (arr[l] < arr[r]) {
-				swap(arr, ++less, l++);
+				swap(arr, ++less, l++);//遇到有等于边界值的情况的时候，指针与边界值换，区域扩增1;
 			} else if (arr[l] > arr[r]) {
 				swap(arr, --more, l);
 			} else {
-				l++;
+				l++;//等于边界值的时候，指针右移
 			}
 		}
 		swap(arr, more, r);
-		return new int[] { less + 1, more };
+		return new int[] { less + 1, more };//返回等于边界值（可能有多个）的下标的数组
 	}
 
 	public static void swap(int[] arr, int i, int j) {
