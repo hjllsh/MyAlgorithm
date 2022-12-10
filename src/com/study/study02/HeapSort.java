@@ -18,7 +18,7 @@ public class HeapSort {
         }
     }
     /**
-     * 实现  大根树
+     * 实现  大根堆
      * */
     public static void heapInsert(int[] arr, int index) {
         while (arr[index] > arr[(index - 1) / 2]) {//如果当前节点的子节点大于父节点
@@ -27,7 +27,7 @@ public class HeapSort {
         }
     }
     /**
-     *  实现 大根树 的排序
+     *  实现 大根堆 的排序
      * */
     public static void heapify(int[] arr, int index, int size) {
         int left = index * 2 + 1;//左节点

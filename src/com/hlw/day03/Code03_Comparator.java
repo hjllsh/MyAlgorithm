@@ -1,6 +1,6 @@
 package com.hlw.day03;
 
-
+//比较器
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -19,7 +19,7 @@ public class Code03_Comparator {
 			this.age = age;
 		}
 	}
-
+	//id升序
 	public static class IdAscendingComparator implements Comparator<Student> {
 
 		@Override
@@ -28,7 +28,7 @@ public class Code03_Comparator {
 		}
 
 	}
-
+	//id降序
 	public static class IdDescendingComparator implements Comparator<Student> {
 
 		@Override
@@ -106,7 +106,7 @@ public class Code03_Comparator {
 		System.out.println("===========================");
 		System.out.println("===========================");
 		System.out.println("===========================");
-
+		//优先队列  队列构建时提供的比较器可以覆盖默认优先级
 		PriorityQueue<Student> maxHeapBasedAge = new PriorityQueue<>(new AgeDescendingComparator());
 		maxHeapBasedAge.add(student1);
 		maxHeapBasedAge.add(student2);
